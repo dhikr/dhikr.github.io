@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+        />
+        <title>Dhikr.io | coming soon...</title>
+    </head>
+    <style>
+        main {
+            justify-content: center;
+            align-content: center;
+        }
+        img {
+          border-radius: 15px;
+        }
+        figcaption {
+          text-align: center;
+        }
+        h2,#hadith {
+          color: #F45D2C;
+        }
+        progress {
+          --pico-progress-color:#D24317;
+        }
+    </style>
+    <body>
+        <main class="container" style="min-height: 100vh">
+          <figure>
+          <img
+            src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1280&auto=format&q=2160&ixlib=rb-4.1.0"
+            alt="Madina-al-Munawwarah"
+          >
+          <figcaption>
+            Image from
+            <a href="https://unsplash.com/s/photos/Madina" target="_blank">Unsplash</a>
+          </figcaption>
+        </figure>
+            <hgroup>
+                <h2>Get inspired by Prophet</h2>
+                <p>We are coming soon with <span id="hadith"><span aria-busy="true"></span></span> to spread the religion of the Prophet.</p>
+            </hgroup>
+        </main>
+        <script>
+              const apiURL = "https://hadithapi.com/api/books?apiKey=$2y$10$E0wRsbc26H3vnytPnbLxvuZJ0Et6Ffo6k1Rv6Gl6uFdjx8c4RS";
+    const totalHadith = document.getElementById("hadith");
+
+fetch(apiURL)
+  .then(response => response.json())
+  .then(data => {
+    const books = data.books;
+    // 0 Hadith Book filter 
+    const filteredBooks = books.filter(book => parseInt(book.hadiths_count) > 0);
+    const totalHadiths = filteredBooks.reduce((sum, book) => {
+        return sum + parseInt(book.hadiths_count);
+      }, 0);
+      totalHadith.innerHTML = `${totalHadiths.toLocaleString()} hadiths`;
+    // Agar koi book nahi ho
+      if (filteredBooks.length === 0) {
+        totalHadith.innerText = "40465 hadiths";
+      }
+  }).catch(error => {
+      totalHadith.innerText = "40465 hadiths";
+      console.error("Error fetching data:", error);
+    });
+        </script>
+    </body>
+</html>
