@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="color-scheme" content="light" />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
@@ -27,6 +26,10 @@
         progress {
           --pico-progress-color:#D24317;
         }
+        .contrast {
+          color: #F45D2C;
+          padding: 5px 15px !important;
+        }
     </style>
     <body>
         <main class="container" style="min-height: 100vh">
@@ -44,6 +47,8 @@
                 <h2>Get inspired by Prophet</h2>
                 <p>We are coming soon with <span id="hadith"><span aria-busy="true"></span></span> to spread the religion of the Prophet.</p>
             </hgroup>
+            <a class="contrast" role="button" href="upi://pay?pa=6391226574@mbk&pn=Dhikr.io&am=100&cu=INR
+">Donate</a>
         </main>
         <script>
               const apiURL = "https://hadithapi.com/api/books?apiKey=$2y$10$E0wRsbc26H3vnytPnbLxvuZJ0Et6Ffo6k1Rv6Gl6uFdjx8c4RS";
