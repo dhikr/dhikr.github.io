@@ -32,8 +32,8 @@
   gtag('config', 'G-JZ84T86B1Y');
 </script>
     </head>
-    <style>
-        main {
+<style>
+main {
             justify-content: center;
             align-content: center;
         }
@@ -42,65 +42,203 @@
         }
         figcaption {
           text-align: center;
+          font-size: 8px;
         }
-        h2,#hadith {
+        h2 {
           color: #F45D2C;
-        }
-        progress {
-          --pico-progress-color:#D24317;
         }
         .contrast {
           color: #F45D2C;
           padding: 5px 15px !important;
         }
-        article {
+        .article {
           margin-bottom: 0 !important;
           border-radius: 0 !important;
           border-top: 1px solid rgba(255,255,255,0.1);
         }
-    </style>
-    <body>
-        <main class="container" style="min-height: 100vh">
+        .article-hussain article:nth-child(odd) {
+  background-color: hsl(14.7,40.1%,20%);
+  border: 1px solid #F45D2C;
+}
+        .article-hussain article:nth-child(even) {
+  border: 1px solid;
+}
+#likeBtn {
+  text-decoration: none;
+}
+.like_div {
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  gap: 10px;
+}
+.like_div button {
+  background: white;
+  color: #F45D2C;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.liked svg {
+    fill: #F45D2C;
+    stroke: white;
+  }
+
+  .like_div button svg {
+    transition: 0.3s;
+  }
+  .like-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.like-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: white;
+  color: #F45D2C;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  border: 1px solid #F45D2C;
+}
+
+</style>
+<body>
+  <main class="container" style="min-height: 100vh">
+            <hgroup>
+                <h2>Hussain Ibn e Ali</h2>
+                <p>The Man Who Sacrificed Everything For Us</p>
+            </hgroup>
           <figure>
           <img
-            src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1280&auto=format&q=2160&ixlib=rb-4.1.0"
-            alt="Madina-al-Munawwarah"
+            src="./aashura-day.png"
+            alt="Aashura-Day"
           >
           <figcaption>
             Image from
-            <a href="https://unsplash.com/s/photos/Madina" target="_blank">Unsplash</a>
+            <a href="https://pngtree.com/freepng/ashura-day-imam-hussain-s-tent-and-horse-next-to-his-big-flag_15918682.html" target="_blank">PNGTree</a>
           </figcaption>
         </figure>
-            <hgroup>
-                <h2>Get inspired by Prophet</h2>
-                <p>We are coming soon with <span id="hadith"><span aria-busy="true"></span></span> to spread the religion of the Prophet.</p>
-            </hgroup>
-            <a class="contrast" role="button" href="upi://pay?pa=6391226574@mbk&pn=Dhikr.io&am=100&cu=INR
-">Donate</a>
-        </main>
-        <article>Developing under Codeliya IT Solutions</article>
-        <script>
-              const apiURL = "https://hadithapi.com/api/books?apiKey=$2y$10$E0wRsbc26H3vnytPnbLxvuZJ0Et6Ffo6k1Rv6Gl6uFdjx8c4RS";
-    const totalHadith = document.getElementById("hadith");
+        <h4>Hussain's Legacy</h4>
+        <div class="article-hussain">
+        <article>Hussain Ibn Ali (AS) was Ali Ibn Abi Talib (AS) and Fatimah (AS)’s Younger son</article>
+        <article>Hussain was born on 3 Sha’aban (AH 4) in Medinah, the city of Saudi Arabia</article>
+        <article>Grandson of Prophet Muhammad (S.A.W) and Khadija (AS)</article>
+        <article>After the Death of Hasan (AS) [Elder brother of Hussain and Elder son of Ali], Hussain (AS) kept the peace as per treaty between Hasan (AS) and Muawiyah</article>
+        <article>Imam Hussain (AS) never accepted Yazid, as the successor after the death of Muawiyah. The reason behind not accepting Yazid as a caliph was Umayyads were oppressive and religiously extremist and misguided people</article>
+        <article>People of Kufa sent letters to him asking for his Help. (Which was a plan to invite him and martyr him</article>
+        <article>Hussain (AS) did not take any kind of army with him to Karbala</article>
+        <article>On his way to Karbala, he encountered with the Army of Ubaydullah ibn Ziyad. Who Hussain (AS) commanded that people of Kufa invited him as the people needed an IMAM</article>
+        <article>Two days away from Kufa, Hussain (AS) along with his family the people of Kufa opposed his claims. At a point near Euphrates river, Hussain (AS) and his family stopped by Yazid’s army and restricted their reach to get the water.</article>
+        <article>After reaching Karbala, Imam Hussain (AS) knew that it will be his final resting place. About Imam Hussain, (AS) martyrdom in Karbala was already been told even before his birth!</article>
+        <article>No Army Imam Hussain (AS) didn’t take any Army with him to Karbala (because he was there to make peace, not war!) There were only 72 people with Imam Hussain (AS), including Woman, Children, and his Family members because he was there to make peace, not war</article>
+        <article>Returning of Hur to Imam Hussain (AS)Hur, who was in the army of Yazid, came back to him and then joined him. Hur was the person who stopped Imam Hussain (AS) and his family members to get the water! Hur then came back and asked for forgiveness which Imam Hussain (AS) accepted and forgave him</article>
+        <article>Ali Asghar (AS)” was the youngest Martyred of KarbalaA poisoned arrow struck into his name when he was just 6 years old, He was the youngest person to be martyred in the battle of Karbala.</article>
+        <article>The only male survivor in the battle of Karbala was Zain Ul Abideen (AS) Zain Ul Adibeen (AS) was ill and due to his illness, he didn’t fight. After the martyrdom of Imam Hussain (RA), he was kept as prisoners among with other women and children left in Imam Hussain (AS)’s family</article>
+        <article>The last martyr in the battle of Karbala was Imam Hussain (AS) ALLAH HO AKBER! martyred Imam Hussain (AS) by cutting off his head, Imam Hussain (AS) was the last martyr in this battle.</article></div>
+        <h6>His Legacy Continues To Inspire Millions</h6>
+   <!--         <a class="contrast" role="button" href="upi://pay?pa=6391226574@mbk&pn=Dhikr.io&am=100&cu=INR
+">Donate</a>-->
+<div class="like_div">
+  <div class="like-wrapper">
+  <button id="likeBtn" class="contrast" aria-label="Like">
+<svg id="likeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>
+  </button>
+  <span id="likeCount" class="like-count-badge">0</span>
+  </div>
+  <button id="share" class="contrast"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2-icon lucide-share-2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button>
+</div>
 
-fetch(apiURL)
-  .then(response => response.json())
-  .then(data => {
-    const books = data.books;
-    // 0 Hadith Book filter 
-    const filteredBooks = books.filter(book => parseInt(book.hadiths_count) > 0);
-    const totalHadiths = filteredBooks.reduce((sum, book) => {
-        return sum + parseInt(book.hadiths_count);
-      }, 0);
-      totalHadith.innerHTML = `${totalHadiths.toLocaleString()} hadiths`;
-    // Agar koi book nahi ho
-      if (filteredBooks.length === 0) {
-        totalHadith.innerText = "40465 hadiths";
+        </main>
+        <article class="article">Develoed by Shabbir Ali</article>
+
+  <!-- Firebase SDKs -->
+<!-- ✅ Firebase CDN Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-database-compat.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAmQxtIecWxBMnyS5P5-m7NunfAMXEJwDw",
+    authDomain: "tribute-imam-hussain.firebaseapp.com",
+    databaseURL: "https://tribute-imam-hussain-default-rtdb.firebaseio.com",
+    projectId: "tribute-imam-hussain",
+    storageBucket: "tribute-imam-hussain.appspot.com",
+    messagingSenderId: "726246945001",
+    appId: "1:726246945001:web:318e8c4e5b3fabdcb0c078",
+    measurementId: "G-790FGPLXGM"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const likeRef = db.ref("likes/tributeToHussain");
+
+  const likeBtn = document.getElementById("likeBtn");
+  const likeCountEl = document.getElementById("likeCount");
+  const userLikedKey = "liked_tributeToHussain";
+
+  let hasLiked = localStorage.getItem(userLikedKey) === "true";
+  updateLikeState(hasLiked);
+
+  likeRef.on("value", (snapshot) => {
+    const count = snapshot.val() || 0;
+    likeCountEl.innerText = count;
+  });
+
+  likeBtn.addEventListener("click", () => {
+    hasLiked = !hasLiked;
+
+    if (hasLiked) {
+      likeRef.transaction(current => (current || 0) + 1);
+      localStorage.setItem(userLikedKey, "true");
+    } else {
+      likeRef.transaction(current => Math.max((current || 0) - 1, 0));
+      localStorage.setItem(userLikedKey, "false");
+    }
+
+    updateLikeState(hasLiked);
+  });
+
+  function updateLikeState(liked) {
+    if (liked) {
+      likeBtn.classList.add("liked");
+    } else {
+      likeBtn.classList.remove("liked");
+    }
+  }
+</script>
+<script>
+  const shareBtn = document.getElementById("share");
+
+  shareBtn.addEventListener("click", async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Tribute to Imam Hussain",
+          text: "A heartfelt salute to a timeless legacy!",
+          url: window.location.href
+        });
+      } catch (err) {
+        console.error("Sharing failed:", err);
       }
-  }).catch(error => {
-      totalHadith.innerText = "40465 hadiths";
-      console.error("Error fetching data:", error);
-    });
-        </script>
-    </body>
+    } else {
+      alert("Your browser doesn't support native sharing.");
+    }
+  });
+</script>
+
+
+</body>
 </html>
