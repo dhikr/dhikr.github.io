@@ -191,10 +191,16 @@ main {
 
   let hasLiked = localStorage.getItem(userLikedKey) === "true";
   updateLikeState(hasLiked);
+function formatNumber(num) {
+  if (num >= 1e6) return (num / 1e6).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (num >= 1e3) return (num / 1e3).toFixed(1).replace(/\.0$/, '') + 'K';
+  return num.toString();
+}
 
   likeRef.on("value", (snapshot) => {
     const count = snapshot.val() || 0;
-    likeCountEl.innerText = count;
+    likeCountEl.innerText = formatNumber(count);
+
   });
 
   likeBtn.addEventListener("click", () => {
