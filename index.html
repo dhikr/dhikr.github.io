@@ -222,20 +222,21 @@ main {
 <script>
   const shareBtn = document.getElementById("share");
 
-const file = await fetch("https://raw.githubusercontent.com/dhikr/dhikr/refs/heads/main/asset/img/imam-hussain-og.png")
-  .then(res => res.blob())
-  .then(blob => new File([blob], "hussain.png", { type: blob.type }));
-
-if (navigator.canShare && navigator.canShare({ files: [file] })) {
-  navigator.share({
-    title: "Tribute to Imam Hussain",
-    text: "Check out this beautiful tribute!",
-    files: [file]
+  shareBtn.addEventListener("click", async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Tribute to Imam Hussain",
+          text: "A heartfelt salute to a timeless legacy!",
+          url: window.location.href
+        });
+      } catch (err) {
+        console.error("Sharing failed:", err);
+      }
+    } else {
+      alert("Your browser doesn't support native sharing.");
+    }
   });
-} else {
-  alert("Image sharing not supported on your browser.");
-}
-
 </script>
 
 
