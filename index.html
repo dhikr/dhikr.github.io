@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>एक‑बार चलने वाली ऑडियो (Pico CSS)</title>
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+  <style>
+    /* Minimal tweaks (Pico handles most styling) */
+    main.container { max-width: 720px; }
+    .lock-chip { display:inline-block; padding:.25rem .6rem; border-radius:999px; font-size:.8rem; border:1px solid var(--muted-border-color,#cfd8dc); }
+    .muted { color: var(--muted-color,#607d8b); }
+    audio[hidden] { display:none; }
+  #status, #lockBadge{
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <article>
+      <header>
+        <h1>Audio From Saif</h1>
+        <p id="status" class="muted"></p>
+      </header>
+
+      <div class="grid">
+        <div>
+          <button id="playBtn" class="primary">▶️ Play</button>
+          <span id="lockBadge" class="lock-chip" aria-live="polite">Unlocked</span>
+        </div>
+      </div>
+
+      <!-- Hidden audio (no native controls) -->
+      <audio id="audio" preload="metadata" hidden></audio>
+    </article>
+  </main>
+
+  <script>
+    /**
+     * ===== सेटअप =====
+     * 1) AUDIO_URL में अपनी फ़ाइल का URL डालें (same-origin बेहतर है)।
+     * 2) PAGE_KEY_PREFIX बदलकर नये रिसीवर के लिए लॉक रीसेट कर सकते हैं।
+     */
+    const AUDIO_URL = 'https://github.com/dhikr/dhikr.github.io/raw/refs/heads/main/PTT-20250816-WA0010.opus'; // <-- यहाँ अपना URL दें
+    const PAGE_KEY_PREFIX = 'playOnce:v1:';   // वर्शन बदलो = सभी के लिए रीसेट
+
+    // हल्का hash ताकि हर ऑडियो का अलग key बने
+    function hashStr(str){
+      let h = 5381; for(let i=0;i<str.length;i++){ h=((h<<5)+h)+str.charCodeAt(i); }
+      return (h>>>0).toString(36);
+    }
+    const key = PAGE_KEY_PREFIX + hashStr(AUDIO_URL);
+
+    const playBtn = document.getElementById('playBtn');
+    const audioEl = document.getElementById('audio');
+    const lockBadge = document.getElementById('lockBadge');
+    const status = document.getElementById('status');
+
+    // सेविंग/प्रिंट को हतोत्साहित करें (best‑effort)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey||e.metaKey) && ['s','S','p','P'].includes(e.key)) e.preventDefault();
+    });
+
+    function setLockedUI(locked){
+      playBtn.disabled = locked;
+      lockBadge.textContent = locked ? 'Played' : 'Play';
+      status.textContent = locked
+        ? 'यह ऑडियो पहले ही चल चुकी है और अब लॉक है.'
+        : 'बटन दबाते ही ऑडियो शुरू होगी और उसके बाद यह लॉक हो जाएगी।';
+    }
+
+    // पहले से प्ले हो चुका?
+    const alreadyPlayed = localStorage.getItem(key) === '1';
+    setLockedUI(alreadyPlayed);
+
+    // स्रोत सेट करें
+    audioEl.src = AUDIO_URL;
+
+    playBtn.addEventListener('click', async () => {
+      if (playBtn.disabled) return;
+      // जैसे ही प्लेबैक शुरू करने की कोशिश करें, लॉक मार्क कर दें
+      localStorage.setItem(key, '1');
+      setLockedUI(true);
+      try {
+        await audioEl.play();
+      } catch (err) {
+        console.error('Playback error:', err);
+        if (audioEl.paused) { // प्ले शुरू ही नहीं हुआ
+          localStorage.removeItem(key);
+          setLockedUI(false);
+          alert('प्लेबैक शुरू नहीं हो पाया। कृपया दोबारा प्रयास करें।');
+        }
+      }
+    });
+
+    // खत्म होने पर भी लॉक बनाए रखें
+    audioEl.addEventListener('ended', () => {
+      localStorage.setItem(key, '1');
+      setLockedUI(true);
+    });
+
+    // टैब छोड़ते ही (यदि चल रहा था) लॉक कर दें
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && !audioEl.paused) {
+        localStorage.setItem(key, '1');
+        setLockedUI(true);
+      }
+    });
+  </script>
+</body>
+</html>
